@@ -84,10 +84,13 @@ bool PacketAPI::receivePacket(void)
         }
         case meshtastic_ToRadio_heartbeat_tag:
             if (mr->heartbeat.nonce == 1) {
-                if (nodeInfoModule) {
-                    LOG_INFO("Broadcasting nodeinfo ping");
-                    nodeInfoModule->sendOurNodeInfo(NODENUM_BROADCAST, true, 0, true);
-                }
+                // nodastic: disabled. Every app connect fires a want_response NodeInfo
+                // broadcast, and every node that hears it replies -> NodeInfo storm.
+                // if (nodeInfoModule) {
+                //     LOG_INFO("Broadcasting nodeinfo ping");
+                //     nodeInfoModule->sendOurNodeInfo(NODENUM_BROADCAST, true, 0, true);
+                // }
+                LOG_INFO("Ignore nodeinfo ping, disabled");
             } else {
                 LOG_DEBUG("Got client heartbeat");
             }

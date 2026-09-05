@@ -510,10 +510,13 @@ bool PhoneAPI::handleToRadio(const uint8_t *buf, size_t bufLength)
             // Default nonce (0) remains a plain keepalive that triggers
             // a queue-status reply.
             if (toRadioScratch.heartbeat.nonce == 1) {
-                if (nodeInfoModule) {
-                    LOG_INFO("Broadcast nodeinfo ping (serial)");
-                    nodeInfoModule->sendOurNodeInfo(NODENUM_BROADCAST, true, 0, true);
-                }
+                // nodastic: disabled. Every app connect fires a want_response NodeInfo
+                // broadcast, and every node that hears it replies -> NodeInfo storm.
+                // if (nodeInfoModule) {
+                //     LOG_INFO("Broadcast nodeinfo ping (serial)");
+                //     nodeInfoModule->sendOurNodeInfo(NODENUM_BROADCAST, true, 0, true);
+                // }
+                LOG_INFO("Ignore nodeinfo ping (serial), disabled");
             } else {
                 LOG_TRACE("Got client heartbeat");
                 heartbeatReceived = true;
