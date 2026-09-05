@@ -158,6 +158,15 @@ meshtastic_MeshPacket *NodeInfoModule::allocReply()
                                              currentRequest->decoded.portnum == meshtastic_PortNum_NODEINFO_APP &&
                                              currentRequest->decoded.want_response && !isFromUs(currentRequest);
 
+    // nodastic: never answer want_response on a *broadcast* NodeInfo. Every node hearing it
+    // replies at once -> NodeInfo storm. Unicast requests still get a reply.
+    if (isReplyingToExternalRequest && isBroadcast(currentRequest->to)) {
+        LOG_DEBUG("Skip send NodeInfo reply to broadcast request");
+        ignoreRequest = true;
+        suppressReplyForCurrentRequest = false;
+        return NULL;
+    }
+
     if (suppressReplyForCurrentRequest && isReplyingToExternalRequest) {
         LOG_DEBUG("Skip send NodeInfo since we heard the requester <12h ago");
         ignoreRequest = true;
