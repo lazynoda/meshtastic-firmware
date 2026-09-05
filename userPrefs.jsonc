@@ -121,4 +121,16 @@
   "USERPREFS_RINGTONE_RTTTL": "24:d=32,o=5,b=565:f6,p,f6,4p,p,f6,p,f6,2p,p,b6,p,b6,p,b6,p,b6,p,b,p,b,p,b,p,b,p,b,p,b,p,b,p,b,1p.,2p.,p",
   // "USERPREFS_NETWORK_IPV6_ENABLED": "1",
   "USERPREFS_TZ_STRING": "tzplaceholder                                         "
+  // "USERPREFS_LORACONFIG_USE_PRESET": "false", // Set false to use the manual bandwidth/spread factor/coding rate values below instead of a modem preset.
+  // "USERPREFS_LORACONFIG_BANDWIDTH": "250", // LoRa bandwidth in kHz, applied when USE_PRESET is false.
+  // "USERPREFS_LORACONFIG_SPREAD_FACTOR": "10", // LoRa spreading factor (7-12), applied when USE_PRESET is false.
+  // "USERPREFS_LORACONFIG_CODING_RATE": "5", // LoRa coding rate denominator (e.g. 5 = 4/5), applied when USE_PRESET is false.
+  // "USERPREFS_LORACONFIG_OVERRIDE_FREQUENCY": "906.875", // Override the transmit frequency in MHz, ignoring the channel-derived frequency.
+  // "USERPREFS_CHANNEL_4_PSK": "{ 0x01 }", // Channels 4-7 take the same USERPREFS_CHANNEL_<n>_* fields as 0-3; setting the PSK is what enables the index.
+  // "USERPREFS_CHANNEL_5_PSK": "{ 0x01 }", // PSK for channel index 5.
+  // "USERPREFS_CHANNEL_6_PSK": "{ 0x01 }", // PSK for channel index 6.
+  // "USERPREFS_CHANNEL_7_PSK": "{ 0x01 }", // PSK for channel index 7.
+  // "USERPREFS_OTA_PSK": "REPLACEME_OTA_PASSWORD", // Password required for Ethernet/network OTA firmware updates (see src/mesh/eth/ethOTA.cpp).
+  // "USERPREFS_SIMRADIO_EMULATE_COLLISIONS": "1", // Portduino simulator only: drop overlapping packets to emulate RF collisions.
+  // "USERPREFS_HAS_SPLASH": "1", // Define when shipping custom splash bitmaps; suppresses the built-in icon.xbm/icon_small.xbm boot logos.
 }
