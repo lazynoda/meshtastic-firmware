@@ -72,6 +72,7 @@
   // "USERPREFS_USE_ADMIN_KEY_1": "{}",
   // "USERPREFS_USE_ADMIN_KEY_2": "{}",
   // "USERPREFS_CONFIG_SECURITY_IS_MANAGED": "true", // Ignored unless an admin key is also set
+  // "USERPREFS_CONFIG_SECURITY_PRIVATE_KEY": "{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }", // Baked X25519 private key (32 bytes). Public key and NodeNum derive from it, so identity survives factory reset. Generate: openssl genpkey -algorithm X25519 -outform DER | tail -c 32 | xxd -i -c 32
   // "USERPREFS_OEM_TEXT": "Caterham Car Club",
   // "USERPREFS_OEM_FONT_SIZE": "0",
   // "USERPREFS_OEM_IMAGE_WIDTH": "50",

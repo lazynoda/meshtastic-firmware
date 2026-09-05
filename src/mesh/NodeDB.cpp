@@ -1142,6 +1142,18 @@ void NodeDB::installDefaultConfig(bool preserveKey = false)
     } else {
         config.security.private_key.size = 0;
     }
+#ifdef USERPREFS_CONFIG_SECURITY_PRIVATE_KEY
+    // nodastic: bake the node identity key at build time. It overrides any preserved key, and the
+    // public key (hence the NodeNum, crc32 of it) is derived from it at boot, so the node identity
+    // survives factory reset and reflash.
+    {
+        static const uint8_t bakedPrivateKey[] = USERPREFS_CONFIG_SECURITY_PRIVATE_KEY;
+        static_assert(sizeof(bakedPrivateKey) == 32, "USERPREFS_CONFIG_SECURITY_PRIVATE_KEY must be 32 bytes");
+        config.security.private_key.size = 32;
+        memcpy(config.security.private_key.bytes, bakedPrivateKey, 32);
+        LOG_INFO("Using baked private key for PKI");
+    }
+#endif
     config.security.public_key.size = 0;
 
 #ifdef PIN_GPS_EN
